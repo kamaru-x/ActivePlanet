@@ -2,8 +2,25 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from Core.models import Banner,Gallery_Image,Review,Enquiry,Partners,Event
+from Frontpage.models import Visitor
+import uuid
 
 # Create your views here.
+
+# def update_visitors(request):
+#     session_key = request.session.get('session_key')
+
+#     if session_key:
+#         pass
+#     else:
+#         key = str(uuid.uuid4().hex)[:8]
+#         request.session['session_key'] = key
+#         Visitor.objects.create(Key=key)
+
+def update_visitors():
+    key = str(uuid.uuid4().hex)[:8]
+    Visitor.objects.create(Key=key)
+
 
 def home(request):
     mobile_banners = Banner.objects.filter(Banner_Type='Mobile')
@@ -13,13 +30,15 @@ def home(request):
     partners = Partners.objects.all().order_by('-id')
     events = Event.objects.all().order_by('-Date')[:3]
 
+    update_visitors()
+
     context = {
         'mobile_banners' : mobile_banners,
         'system_banners' : system_banners,
         'images' : images,
         'reviews' : reviews,
         'partners' : partners,
-        'events' : events
+        'events' : events,
     }
     return render(request,'Frontpage/index.html',context)
 

@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from Core.models import Banner,Gallery_Image,Partners,Event,Review,Enquiry
 from django.contrib import messages
 from Core.reuse import resize
-
+from Frontpage.models import Visitor
 
 # Create your views here.
 
@@ -17,6 +17,7 @@ def dashboard(request):
     images = Gallery_Image.objects.all().count()
     events = Event.objects.all().count()
     reviews = Review.objects.all().count()
+    visitors = Visitor.objects.all().count()
 
     context = {
         'page' : page,
@@ -24,6 +25,7 @@ def dashboard(request):
         'images' : images,
         'events' : events,
         'reviews' : reviews,
+        'visitors' : visitors,
     }
     return render(request,'Dashboard/Core/dashboard.html',context)
 
