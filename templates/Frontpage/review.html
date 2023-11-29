@@ -1,0 +1,95 @@
+{% extends 'Frontpage/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Header Start here -->
+  <section class="page-header section-notch">
+    <div class="overlay">
+      <div class="container">
+        <h3>Write Your Reviews Here</h3>
+        <!-- <ul>
+          <li><a href="index.html">Home</a></li>
+          <li>-</li>
+          <li>Contact us</li>
+        </ul> -->
+      </div><!-- container -->
+    </div><!-- overlay -->
+  </section><!-- page header -->
+  <!-- Page Header End here -->
+
+
+  <!-- Contact Start here -->
+  <section class="contact contact-page">
+    <div class="contact-details padding-120">
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-lg-4 col-md-6 col-xs-12">
+            <ul>
+              <li class="contact-item">
+                <span class="icon flaticon-signs"></span>
+                <div class="content">
+                  <h4>Our Location</h4>
+                  <p>218 Sahera Tropical Center Room#7 <br> New Newyork Road 1205</p>
+                </div>
+              </li>
+              <li class="contact-item">
+                <span class="icon flaticon-smartphone"></span>
+                <div class="content">
+                  <h4>Phone Number</h4>
+                  <p>01923-970212, 01776-502993 <br> +2154897369</p>
+                </div>
+              </li>
+              <li class="contact-item">
+                <span class="icon flaticon-message"></span>
+                <div class="content">
+                  <h4>Email Address</h4>
+                  <p>hello@Thycha Technologies <br> hello@codexcoder.com</p>
+                </div>
+              </li>
+            </ul>
+          </div> -->
+          <div id="response">
+            
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <form class="contact-form" id="form">
+              <input name="name" id="name" style="border: 1px solid rgba(0, 0, 0, 0.405); border-radius: 5px;" type="text" placeholder="Your Name" class="contact-input">
+              <!-- <input type="file" name="image"  class="form-control contact-input " > -->
+              <input name="place" id="place" style="border: 1px solid rgba(0, 0, 0, 0.405); border-radius: 5px;" type="text" placeholder="Your Place" class="contact-input">
+              <textarea id="description" name="description" style="border: 1px solid rgba(0, 0, 0, 0.405); border-radius: 5px;" rows="5" class="contact-input" placeholder="Your Experience"></textarea>
+              <input id="submit" style="border: 1px solid rgba(0, 0, 0, 0.405); border-radius: 5px;" type="button" name="submit" value="Submite" class="contact-button">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="contact-map" id="map-canvas"></div> -->
+  </section>
+  <!-- Contact End here -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+      $(document).ready(function(){
+        $('#submit').on('click',function(){
+          var name = $('#name').val()
+          var place = $('#place').val()
+          var description = $('#description').val()
+
+          $.ajax({
+            url : '{% url "review" %}',
+            type : 'POST',
+            data : {'name':name,'place':place,'description':description},
+
+            success : function(response){
+              if (response.status == 'success'){
+                $('#response').html('<p style="color:green">Review added successfully ... !</p>')
+                $('#form')[0].reset();
+              }else{
+                $('#response').html('<p style="color:red">Something Went wront cant add review ... !</p>')
+              }
+            }
+          })
+        })
+      })
+  </script>
+
+  {% endblock content %}

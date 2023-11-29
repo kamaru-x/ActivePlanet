@@ -1,0 +1,56 @@
+{% extends 'Frontpage/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page Header Start here -->
+  <section class="page-header section-notch">
+    <div class="overlay">
+      <div class="container">
+        <h3>Our  Gallery</h3>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>-</li>
+          <li>Gallery</li>
+        </ul>
+      </div><!-- container -->
+    </div><!-- overlay -->
+  </section><!-- page header -->
+  <!-- Page Header End here -->
+
+  <!-- Gallery Start here -->
+  <section class="gallery padding-120">
+    <div class="container">
+      <!-- <ul class="gallery-menu">
+        <li class="active" data-filter="*">Show all</li>
+        <li data-filter=".branding">Rides</li>
+        <li data-filter=".development">Event</li>
+        <li data-filter=".packing">Playing</li>
+        <li data-filter=".photography">Art</li>
+      </ul> -->
+
+      <div class="gallery-items">
+
+        {% for image in images %}
+          <div class="gallery-item branding packing">
+            <div class="gallery-image">
+              <img src="{{ image.Image.url }}" alt="gallery image" class="img-responsive">
+              <div class="gallery-overlay">
+                <div class="bg"></div>
+              </div>
+              <div class="gallery-content">
+                <a href="{{ image.Image.url }}" data-rel="lightcase:myCollection"><i
+                    class="icon flaticon-expand"></i></a>
+                <!-- <h4>Product Name Here</h4>
+                <span>By: Active Planet Theme</span> -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div><!-- gallery items -->
+      <div class="gallery-button"><a href="gallery.html" class="button-default">View More Gallery</a></div>
+    </div><!-- container -->
+  </section><!-- gallery -->
+  <!-- Gallery End here -->
+
+{% endblock content %}
