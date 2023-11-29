@@ -302,7 +302,13 @@ img {
 					</div>
 				</div>
 			</div>
-			<div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; "><a href="review.html"><button style="background-color:rgb(146, 39, 143); border-radius: 5px;"><h4 style="color: white;" >Write Your Reviews ></h4></button></a></div>
+			<div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; ">
+				<a href="{% url 'review' %}">
+					<button style="background-color:rgb(146, 39, 143); border-radius: 5px;">
+						<h4 style="color: white;" >Write Your Reviews ></h4>
+					</button>
+				</a>
+			</div>
 		</div>
 	</section>
 	<!-- Testimonial End here -->

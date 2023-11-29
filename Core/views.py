@@ -13,9 +13,17 @@ from Core.reuse import resize
 @login_required
 def dashboard(request):
     page = 'dashboard'
+    enquiries = Enquiry.objects.all().order_by('-id')[:10]
+    images = Gallery_Image.objects.all().count()
+    events = Event.objects.all().count()
+    reviews = Review.objects.all().count()
 
     context = {
-        'page' : page
+        'page' : page,
+        'enquiries' : enquiries,
+        'images' : images,
+        'events' : events,
+        'reviews' : reviews,
     }
     return render(request,'Dashboard/Core/dashboard.html',context)
 
