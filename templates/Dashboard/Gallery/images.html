@@ -38,7 +38,7 @@
         </div> -->
         <div class="grid grid-cols-12 gap-5 mt-5">
             {% for image in images %}
-                <div class="col-span-2">
+                <div class="col-span-6 md:col-span-2 flex justify-center">
                     <div class="w-48 h-48 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
                         <img class="rounded-md" alt="Midone - HTML Admin Template" src="{{ image.Image.url }}">
                         <a onclick="delete_image('{{image.id}}')" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-modal">
