@@ -49,7 +49,7 @@ def add_banner(request):
         image = request.FILES.get('image')
 
         try:
-            resized = resize(image,800)
+            # resized = resize(image,800)
             Banner.objects.create(Banner_Type=banner_type, Image=image)
 
             messages.success(request, 'New banner added successfully ...!')
@@ -95,9 +95,13 @@ def add_images(request):
 
         for image in images:
             resized = resize(image,800)
-            Gallery_Image.objects.create(Image=resized)
+            try:
+                Gallery_Image.objects.create(Image=resized)
+                messages.success(request,'New images added successfully ... !')
+            except Exception as exception:
+                messages.warning(request,exception)
+                return redirect('image-gallery')
 
-        messages.success(request,'New images added successfully ... !')
         return redirect('manage-gallery')
     
 #----------------------------------- Delete Image -----------------------------------#
