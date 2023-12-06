@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from Core.models import Banner,Gallery_Image,Partners,Event,Review,Enquiry
+from Core.models import Banner,Gallery_Image,Partners,Event,Review,Enquiry,Schools
 from django.contrib import messages
 from Core.reuse import resize
 from Frontpage.models import Visitor
@@ -97,11 +97,10 @@ def add_images(request):
             resized = resize(image,800)
             try:
                 Gallery_Image.objects.create(Image=resized)
-                messages.success(request,'New images added successfully ... !')
             except Exception as exception:
                 messages.warning(request,exception)
                 return redirect('image-gallery')
-
+        messages.success(request,'New images added successfully ... !')
         return redirect('manage-gallery')
     
 #----------------------------------- Delete Image -----------------------------------#
@@ -260,3 +259,38 @@ def delete_enquiry(request):
         enquiry = Enquiry.objects.get(id=enquiry_id)
         enquiry.delete()
         return redirect('enquiries')
+    
+#----------------------------------- Happy Schools -----------------------------------#
+
+@login_required
+def manage_schools(request):
+    schools = Schools.objects.all().order_by('-id')
+
+    context = {
+        'images' : schools
+    }
+    return render(request,'Dashboard/Gallery/schools.html',context)
+
+#----------------------------------- Add Partners -----------------------------------#
+
+@login_required
+def add_schools(request):
+    if request.method == 'POST':
+        schools = request.FILES.getlist('images')
+
+        for partner in schools:
+            resized = resize(partner,800)
+            Schools.objects.create(Image=resized)
+
+        messages.success(request,'New schools added successfully ... !')
+        return redirect('manage-schools')
+    
+#----------------------------------- Delete Partner -----------------------------------#
+
+@login_required
+def delete_school(request):
+    school_id = request.POST.get('image_id')
+    school = Schools.objects.get(id=school_id)
+    school.delete()
+    messages.warning(request,'school Deleted ... !')
+    return redirect('manage-schools')

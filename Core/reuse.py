@@ -9,6 +9,6 @@ def resize(image,nwidth):
     img = img.resize((new_width, new_height))
     # string = random_string(6)
     image_path = os.path.join('images', f'{image.name}')
-    img.save(os.path.join('media', image_path), optimize=True, quality=30)
+    img.save(os.path.join('media', image_path), optimize=True, quality=60)
 
     return image_path

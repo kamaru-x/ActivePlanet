@@ -43,20 +43,15 @@
     </div>
 
     <div class="row" >
-      <div class="col-lg-6 col-sm-6 col-xs-12">
-        <div class="class-item" style="text-align: end;">
-          <div class="content" >
-            <img src="{% static 'frontpage/IMG_6120_jpg.jpg' %}"  alt="">
+      {% for school in schools %}
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+          <div class="class-item" style="text-align: end;">
+            <div class="content" >
+              <img src="{{ school.Image.url }}"  alt="">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6 col-sm-6 col-xs-12">
-        <div class="class-item" style="text-align: end;">
-          <div class="content" >
-            <img src="{% static 'frontpage/IMG_5846_jpg.jpg' %}"  alt="">
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
   </div>

@@ -1,21 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from Core.models import Banner,Gallery_Image,Review,Enquiry,Partners,Event
+from Core.models import Banner,Gallery_Image,Review,Enquiry,Partners,Event,Schools
 from Frontpage.models import Visitor
 import uuid
 
 # Create your views here.
-
-# def update_visitors(request):
-#     session_key = request.session.get('session_key')
-
-#     if session_key:
-#         pass
-#     else:
-#         key = str(uuid.uuid4().hex)[:8]
-#         request.session['session_key'] = key
-#         Visitor.objects.create(Key=key)
 
 def update_visitors():
     key = str(uuid.uuid4().hex)[:8]
@@ -29,6 +19,7 @@ def home(request):
     reviews = Review.objects.all().order_by('-id')[:6]
     partners = Partners.objects.all().order_by('-id')
     events = Event.objects.all().order_by('-Date')[:3]
+    schools = Schools.objects.all().order_by('-id')[:2]
 
     update_visitors()
 
@@ -39,6 +30,7 @@ def home(request):
         'reviews' : reviews,
         'partners' : partners,
         'events' : events,
+        'schools' : schools,
     }
     return render(request,'Frontpage/index.html',context)
 
@@ -83,7 +75,12 @@ def gallery(request):
     return render(request,'Frontpage/gallery.html',context)
 
 def packages(request):
-    return render(request,'Frontpage/packages.html')
+    schools = Schools.objects.all().order_by('-id')
+
+    context = {
+        'schools' : schools
+    }
+    return render(request,'Frontpage/packages.html',context)
 
 def rides(request):
     return render(request,'Frontpage/rides.html')

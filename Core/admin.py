@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Core.models import Banner,Gallery_Image,Partners,Event,Review,Enquiry
+from Core.models import Banner,Gallery_Image,Partners,Event,Review,Enquiry,Schools
 
 # Register your models here.
 
@@ -13,6 +13,10 @@ class GalleryModelAdmin(admin.ModelAdmin):
 
 @admin.register(Partners)
 class PartnersModelAdmin(admin.ModelAdmin):
+    list_display = ['Image','Date']
+
+@admin.register(Schools)
+class SchoolsModelAdmin(admin.ModelAdmin):
     list_display = ['Image','Date']
 
 @admin.register(Event)

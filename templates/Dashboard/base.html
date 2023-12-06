@@ -64,6 +64,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{% url 'manage-schools' %}" class="menu">
+                            <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="menu__title"> Schools </div>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{% url 'manage-events' %}" class="menu">
                             <div class="menu__icon"> <i data-lucide="box"></i> </div>
                             <div class="menu__title"> Events </div>
@@ -246,6 +252,13 @@
                     <a href="{% url 'manage-partners' %}" class="top-menu">
                         <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
                         <div class="top-menu__title"> Partners </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'manage-schools' %}" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
+                        <div class="top-menu__title"> Schools </div>
                     </a>
                 </li>
 

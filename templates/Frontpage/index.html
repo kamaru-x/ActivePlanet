@@ -27,13 +27,13 @@ img {
 }
 
 </style>
-	<!-- Banner Start here -->
-	<section class="banner section-notch">
+	<!-- System Banner Start here -->
+	<section class="banner section-notch system-banner">
 		<div class="banner-slider swiper-container">
 			<div class="swiper-wrapper">
 
 				{% for banner in system_banners %}
-					<div class="banner-item slide-{{ banner.id }} swiper-slide system-banner" style="background-image: url('{{banner.Image.url}}');">
+					<div class="banner-item slide-{{ banner.id }} swiper-slide" style="background-image: url('{{banner.Image.url}}');">
 						<div class="banner-overlay"></div>
 						<div class="container">
 							<div class="banner-content"></div>
@@ -41,19 +41,31 @@ img {
 					</div>
 				{% endfor %}
 				
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+	</section>
+	<!--System Banner End here -->
+
+	<!-- mobile Banner Start here -->
+	<section class="banner section-notch mobile-banner">
+		<div class="banner-slider swiper-container">
+			<div class="swiper-wrapper">
+
 				{% for banner in mobile_banners %}
-					<div class="banner-item slide-{{ banner.id }} swiper-slide mobile-banner" style="background-image: url('{{banner.Image.url}}');">
+					<div class="banner-item slide-{{ banner.id }} swiper-slide" style="background-image: url('{{banner.Image.url}}');">
 						<div class="banner-overlay"></div>
 						<div class="container">
 							<div class="banner-content"></div>
 						</div>
 					</div>
 				{% endfor %}
+				
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
 	</section>
-	<!-- Banner End here -->
+	<!--mobile Banner End here -->
 
 	<!-- facility Start here -->
 	<section class="facility padding-120" style="margin-top: -70px;">
@@ -132,20 +144,15 @@ img {
 			</div>
 
 			<div class="row" >
-				<div class="col-lg-6 col-sm-6 col-xs-12">
-					<div class="class-item" style="text-align: end;">
-						<div class="content" >
-							<img src="{% static 'frontpage/IMG_6120_jpg.jpg' %}"  alt="">
+				{% for school in schools %}
+					<div class="col-lg-6 col-sm-6 col-xs-12">
+						<div class="class-item" style="text-align: end;">
+							<div class="content" >
+								<img src="{{ school.Image.url }}"  alt="">
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-6 col-sm-6 col-xs-12">
-					<div class="class-item" style="text-align: end;">
-						<div class="content" >
-							<img src="{% static 'frontpage/IMG_5846_jpg.jpg' %}"  alt="">
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 
 			<div style="text-align: end;"><a href="{% url 'packages' %}"><h4 style="color: rgb(146, 39, 143);">See Exiting Offers ></h4></a></div>

@@ -18,6 +18,10 @@ class Partners(models.Model):
     Date = models.DateField(auto_now_add=True)
     Image = models.ImageField(null=True,upload_to='Partners')
 
+class Schools(models.Model):
+    Date = models.DateField(auto_now_add=True)
+    Image = models.ImageField(null=True,upload_to='Partners')
+
 class Event(models.Model):
     Added_Date = models.DateField(auto_now_add=True)
 

@@ -17,6 +17,10 @@ urlpatterns = [
     path('partner/add/',views.add_partners,name='add-partners'),
     path('partner/delete/',views.delete_partner,name='delete-partner'),
 
+    path('school/manage/',views.manage_schools,name='manage-schools'),
+    path('school/add/',views.add_schools,name='add-schools'),
+    path('school/delete/',views.delete_school,name='delete-school'),
+
     path('events/manage/',views.manage_events,name='manage-events'),
     path('event/add/',views.add_event,name='add-event'),
     path('event/edit/<int:event_id>/',views.edit_event,name='edit-event'),
