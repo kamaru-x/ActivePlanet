@@ -200,7 +200,7 @@
 	
 	***************************/
 	
-	#snow {
+	/* #snow {
 	  background: none;
 	  z-index: 200;
 	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/191814/flake1.png"),
@@ -259,13 +259,29 @@
 	  100% {
 		background-position: 500px 1000px, 200px 400px, -100px 300px;
 	  }
+	} */
+
+	.snow-canvas {
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		pointer-events: none;
+		z-index: 99;
 	}
 </style>
 
 <!-----------------------------------------------REMOVE AFTER XMAS--------------------------------------------------------------------------------------->
 
 <body id="scroll-top">
-	<div id="snow"></div>
+	<!-- <div id="snow"></div> -->
+
+    <canvas class="snow-canvas" speed="1" interaction="false" size="2" count="80" opacity="0.00001" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" wind-power="0" image="false" width="1366" height="667"></canvas>
+    <canvas class="snow-canvas" speed="3" interaction="true" size="6" count="30" start-color="rgba(253,252,251,1)" end-color="rgba(251,252,253,0.3)" opacity="0.00001" wind-power="2" image="false" width="1366" height="667"></canvas>
+    <canvas class="snow-canvas" speed="3" interaction="true" size="12" count="20" wind-power="-5" image="{% static 'frontpage/snow/snow.png' %}" width="1366" height="667"></canvas>
+	
 	<!-- Preloader start here -->
 	<div id="preloader">
 		<img src="{% static 'frontpage/ActiveGif.gif' %}" alt="Preloader Image">
@@ -562,6 +578,10 @@
 	<script src="{% static 'frontpage/js/custom.js' %}"></script>
 
 	<!-- snow fall effect for xmas -->
+	<script src="{% static 'frontpage/js/snow-plugin.js' %}"></script>
+	<script>
+		$(".snow-canvas").snow();
+	</script>
 	
 </body>
 
