@@ -13,8 +13,8 @@ def update_visitors():
 
 
 def home(request):
-    mobile_banners = Banner.objects.filter(Banner_Type='Mobile')
-    system_banners = Banner.objects.filter(Banner_Type='System')
+    mobile_banners = Banner.objects.filter(Banner_Type='Mobile').order_by('-id')
+    system_banners = Banner.objects.filter(Banner_Type='System').order_by('-id')
     images = Gallery_Image.objects.all().order_by('-id')[:6]
     reviews = Review.objects.all().order_by('-id')[:6]
     partners = Partners.objects.all().order_by('-id')
