@@ -14,7 +14,7 @@ def error_403(request,exception):
     return render(request,'Error/403.html')
 
 def error_404(request,exception):
-    return render(request,'Error/404.html')
+    return render(request,'Frontpage/404.html')
 
 def error_500(request):
     return render(request,'Error/500.html')

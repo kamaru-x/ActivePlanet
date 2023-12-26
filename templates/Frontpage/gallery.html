@@ -17,16 +17,10 @@
   </section><!-- page header -->
   <!-- Page Header End here -->
 
+  {% if images %}
   <!-- Gallery Start here -->
   <section class="gallery padding-120">
     <div class="container">
-      <!-- <ul class="gallery-menu">
-        <li class="active" data-filter="*">Show all</li>
-        <li data-filter=".branding">Rides</li>
-        <li data-filter=".development">Event</li>
-        <li data-filter=".packing">Playing</li>
-        <li data-filter=".photography">Art</li>
-      </ul> -->
 
       <div class="gallery-items">
 
@@ -40,17 +34,16 @@
               <div class="gallery-content">
                 <a href="{{ image.Image.url }}" data-rel="lightcase:myCollection"><i
                     class="icon flaticon-expand"></i></a>
-                <!-- <h4>Product Name Here</h4>
-                <span>By: Active Planet Theme</span> -->
               </div>
             </div>
           </div>
         {% endfor %}
         
-      </div><!-- gallery items -->
-      <div class="gallery-button"><a href="gallery.html" class="button-default">View More Gallery</a></div>
-    </div><!-- container -->
-  </section><!-- gallery -->
+      </div>
+      <div class="gallery-button"><a href="" class="button-default">View More Gallery</a></div>
+    </div>
+  </section>
   <!-- Gallery End here -->
+  {% endif %}
 
 {% endblock content %}

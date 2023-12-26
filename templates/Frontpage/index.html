@@ -134,32 +134,34 @@ img {
 		</div>
 	</section>
 	<!-- About End here -->
- 
-	<!-- rides Start here -->
-	<section class="rides padding-120">
-		<div class="container">
-			<div class="section-header">
-				<h3>School picnic Packages</h3>
-				<p>Spark excitement and forge unforgettable memories with our exclusive group school tour packages, specially curated to infuse learning with adventure. Seize the opportunity to indulge in thrilling experiences at exclusive rates, ensuring an educational journey that promises fun-filled exploration.</p>
-			</div>
+	
+	{% if schools %}
+		<!-- schools Start here -->
+		<section class="rides padding-120">
+			<div class="container">
+				<div class="section-header">
+					<h3>School picnic Packages</h3>
+					<p>Spark excitement and forge unforgettable memories with our exclusive group school tour packages, specially curated to infuse learning with adventure. Seize the opportunity to indulge in thrilling experiences at exclusive rates, ensuring an educational journey that promises fun-filled exploration.</p>
+				</div>
 
-			<div class="row" >
-				{% for school in schools %}
-					<div class="col-lg-6 col-sm-6 col-xs-12">
-						<div class="class-item" style="text-align: end;">
-							<div class="content" >
-								<img src="{{ school.Image.url }}"  alt="">
+				<div class="row" >
+					{% for school in schools %}
+						<div class="col-lg-6 col-sm-6 col-xs-12">
+							<div class="class-item" style="text-align: end;">
+								<div class="content" >
+									<img src="{{ school.Image.url }}"  alt="">
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
+
+				<div style="text-align: end;"><a href="{% url 'packages' %}"><h4 style="color: rgb(146, 39, 143);">See Exiting Offers ></h4></a></div>
+
 			</div>
-
-			<div style="text-align: end;"><a href="{% url 'packages' %}"><h4 style="color: rgb(146, 39, 143);">See Exiting Offers ></h4></a></div>
-
-		</div>
-	</section>
-	<!-- rides End here -->
+		</section>
+		<!-- schools End here -->
+	{% endif %}
 
 	<!-- Teachers Start here -->
 	<section class="teachers section-notch">
@@ -199,37 +201,39 @@ img {
 	</section>
 	<!-- Teachers End here -->
 
-	<!-- Gallery Start here -->
-	<section class="gallery padding-120">
-		<div class="container">
-			<div class="section-header">
-				<h3>Our Gallery</h3>
-				<p>Discover the magic through our captivating gallery snapshots</p>
-			</div>
-			
-			<div class="gallery-items">
+	{% if images %}
+		<!-- Gallery Start here -->
+		<section class="gallery padding-120">
+			<div class="container">
+				<div class="section-header">
+					<h3>Our Gallery</h3>
+					<p>Discover the magic through our captivating gallery snapshots</p>
+				</div>
+				
+				<div class="gallery-items">
 
-				{% for image in images %}
-					<div class="gallery-item branding packing">
-						<div class="gallery-image">
-							<img src="{{ image.Image.url }}" alt="gallery image" class="img-responsive">
-							<div class="gallery-overlay">
-								<div class="bg"></div>
-							</div>
-							<div class="gallery-content">
-								<a href="{{ image.Image.url }}" data-rel="lightcase:myCollection"><i class="icon flaticon-expand"></i></a>
+					{% for image in images %}
+						<div class="gallery-item branding packing">
+							<div class="gallery-image">
+								<img src="{{ image.Image.url }}" alt="gallery image" class="img-responsive">
+								<div class="gallery-overlay">
+									<div class="bg"></div>
+								</div>
+								<div class="gallery-content">
+									<a href="{{ image.Image.url }}" data-rel="lightcase:myCollection"><i class="icon flaticon-expand"></i></a>
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
 
+				</div>
+				<div class="gallery-button">
+					<a href="{% url 'gallery' %}" class="button-default">View More Gallery</a>
+				</div>
 			</div>
-			<div class="gallery-button">
-				<a href="{% url 'gallery' %}" class="button-default">View More Gallery</a>
-			</div>
-		</div>
-	</section>
-	<!-- Gallery End here -->
+		</section>
+		<!-- Gallery End here -->
+	{% endif %}
 
 	<!-- Achievements Start here -->
 	<section class="achievements section-notch">
@@ -274,111 +278,117 @@ img {
 	</section>
 	<!-- Achievements End here -->
 
-	<!-- Testimonial Start here -->
-	<section class="testimonial padding-120">
-		<div class="container">
-			<div class="section-header">
-				<h3>Hear From Our Lil Explorers</h3>
-				<p>Listen to the wonder through the eyes of our young explorers as they share their thrilling escapades at Active Planet.
-				</p>
-			</div>
-			<div class="testimonial-items">
-				<div class="testimonial-slider swiper-container">
-					<div class="swiper-wrapper">
-						
-						{% for review in reviews %}
-							<div class="testimonial-item swiper-slide">
-								<div class="testimonial-details">
-									<p>{{ review.Description | slice:':50' }}</p>
-									<h4>{{ review.Name }} <span>{{ review.Place }}</span></h4>
-									<!-- <img src="{% static 'images/testimonial/testimonial_icon_01.jpg' %}" alt="testimonial icon"
-										class="img-responsive"> -->
-									<!-- <span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span> -->
-								</div>
-								<!-- <div class="testimonial-image">
-									<img src="{% static 'images/testimonial/testimonial_01.jpg' %}" alt="client image"
-										class="img-responsive">
-								</div> -->
-							</div>
-						{% endfor %}
-						
-					</div>
-				</div>
-			</div>
-			<div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; ">
-				<a href="{% url 'review' %}">
-					<button style="background-color:rgb(146, 39, 143); border-radius: 5px;">
-						<h4 style="color: white;" >Write Your Reviews ></h4>
-					</button>
-				</a>
-			</div>
-		</div>
-	</section>
-	<!-- Testimonial End here -->
-
-	<!-- Partner Start here -->
-	<section class="partner section-notch">
-		<div class="overlay padding-120">
+	{% if reviews %}
+		<!-- Testimonial Start here -->
+		<section class="testimonial padding-120">
 			<div class="container">
-				<div class="section-header bg">
-					<h3>Our Partners</h3>
-					<p>Celebrating collaboration with our esteemed partners who share our commitment to delivering exceptional experiences at Active Planet.</p>
+				<div class="section-header">
+					<h3>Hear From Our Lil Explorers</h3>
+					<p>Listen to the wonder through the eyes of our young explorers as they share their thrilling escapades at Active Planet.
+					</p>
 				</div>
-				<div class="partner-items">
-					<div class="partner-slider swiper-container">
+				<div class="testimonial-items">
+					<div class="testimonial-slider swiper-container">
 						<div class="swiper-wrapper">
-
-							{% for partner in partners %}
-								<div class="partner-item swiper-slide">
-									<img src="{{ partner.Image.url }}" alt="partner image" class="img-responsive">
+							
+							{% for review in reviews %}
+								<div class="testimonial-item swiper-slide">
+									<div class="testimonial-details">
+										<p>{{ review.Description | slice:':100' }}</p>
+										<h4>{{ review.Name }} <span>{{ review.Place }}</span></h4>
+										<!-- <img src="{% static 'images/testimonial/testimonial_icon_01.jpg' %}" alt="testimonial icon"
+											class="img-responsive"> -->
+										<!-- <span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span> -->
+									</div>
+									<!-- <div class="testimonial-image">
+										<img src="{% static 'images/testimonial/testimonial_01.jpg' %}" alt="client image"
+											class="img-responsive">
+									</div> -->
 								</div>
 							{% endfor %}
+							
+						</div>
+					</div>
+				</div>
+				<div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; ">
+					<a href="{% url 'review' %}">
+						<button style="background-color:rgb(146, 39, 143); border-radius: 5px;">
+							<h4 style="color: white;" >Write Your Reviews ></h4>
+						</button>
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- Testimonial End here -->
+	{% endif %}
 
+	{% if partners %}
+		<!-- Partner Start here -->
+		<section class="partner section-notch">
+			<div class="overlay padding-120">
+				<div class="container">
+					<div class="section-header bg">
+						<h3>Our Partners</h3>
+						<p>Celebrating collaboration with our esteemed partners who share our commitment to delivering exceptional experiences at Active Planet.</p>
+					</div>
+					<div class="partner-items">
+						<div class="partner-slider swiper-container">
+							<div class="swiper-wrapper">
+
+								{% for partner in partners %}
+									<div class="partner-item swiper-slide">
+										<img src="{{ partner.Image.url }}" alt="partner image" class="img-responsive">
+									</div>
+								{% endfor %}
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<!-- Partner End here -->
-
-	<!-- Event Start here -->
-	<section class="event event-two padding-120">
-		<div class="container">
-		  <div class="event-items">
-			<div class="row">
-			
-				{% for event in events %}
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="event-item">
-					<div class="event-image">
-						<img src="{{ event.Image.url }}" alt="event image" class="img-responsive">
-						<div class="date">
-						<span>{{ event.Date | date:'d' }}</span>
-						<p>March</p>
+		</section>
+		<!-- Partner End here -->
+	{% endif %}
+	
+	{% if events %}
+		<!-- Event Start here -->
+		<section class="event event-two padding-120">
+			<div class="container">
+			<div class="event-items">
+				<div class="row">
+				
+					{% for event in events %}
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<div class="event-item">
+						<div class="event-image">
+							<img src="{{ event.Image.url }}" alt="event image" class="img-responsive">
+							<div class="date">
+							<span>{{ event.Date | date:'d' }}</span>
+							<p>March</p>
+							</div>
+						</div>
+						<div class="event-content">
+							<h4>{{ event.Name }}</h4>
+							<ul>
+							<li><span><i class="fa fa-clock-o" aria-hidden="true"></i></span>{{ event.Start_Time }} - {{ event.End_Time }}</li>
+							<!-- <li><span><i class="fa fa-home" aria-hidden="true"></i></span>218 New Newyork Road Newyork</li> -->
+							</ul>
+							<p>{{ event.Description }}</p>
+							<a href="{% url 'contact' %}" class="button-default">Join Now</a>
+						</div>
 						</div>
 					</div>
-					<div class="event-content">
-						<h4>{{ event.Name }}</h4>
-						<ul>
-						<li><span><i class="fa fa-clock-o" aria-hidden="true"></i></span>{{ event.Start_Time }} - {{ event.End_Time }}</li>
-						<!-- <li><span><i class="fa fa-home" aria-hidden="true"></i></span>218 New Newyork Road Newyork</li> -->
-						</ul>
-						<p>{{ event.Description }}</p>
-						<a href="{% url 'contact' %}" class="button-default">Join Now</a>
-					</div>
-					</div>
-				</div>
-				{% endfor %}
+					{% endfor %}
 
+				</div>
 			</div>
-		  </div>
-		</div>
-	  </section>
-	<!-- event End here -->
+			</div>
+		</section>
+		<!-- event End here -->
+	{% endif %}
 
 {% endblock content %}
