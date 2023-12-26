@@ -89,50 +89,49 @@
 </section>
 <!-- Achievements End here -->
 
-{% if reviews %}
-  <!-- Testimonial Start here -->
-  <section class="testimonial padding-120">
-      <div class="container">
-          <div class="section-header">
-              <h3>Hear From Our Lil Explorers</h3>
-              <p>Listen to the wonder through the eyes of our young explorers as they share their thrilling escapades at Active Planet.</p>
-          </div>
-          <div class="testimonial-items">
-              <div class="testimonial-slider-two swiper-container">
-                <div class="swiper-wrapper">
-                  
-                  {% for review in reviews %}
-                    <div class="testimonial-item swiper-slide">
-                      <div class="testimonial-details">
-                        <p>{{ review.Description | slice:':50' }}</p>
-                        <h4>{{ review.Name }} <span>{{ review.Place }}</span></h4>
-                        <!-- <img src="{% static 'images/testimonial/testimonial_icon_01.jpg' %}" alt="testimonial icon"
-                          class="img-responsive"> -->
-                        <!-- <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span> -->
-                      </div>
-                      <!-- <div class="testimonial-image">
-                        <img src="{% static 'images/testimonial/testimonial_01.jpg' %}" alt="client image"
-                          class="img-responsive">
-                      </div> -->
-                    </div>
-                  {% endfor %}
 
-                </div>
+<!-- Testimonial Start here -->
+<section class="testimonial padding-120">
+    <div class="container">
+        <div class="section-header">
+            <h3>Hear From Our Lil Explorers</h3>
+            <p>Listen to the wonder through the eyes of our young explorers as they share their thrilling escapades at Active Planet.</p>
+        </div>
+        <div class="testimonial-items">
+            <div class="testimonial-slider-two swiper-container">
+              <div class="swiper-wrapper">
+                
+                {% for review in reviews %}
+                  <div class="testimonial-item swiper-slide">
+                    <div class="testimonial-details">
+                      <p>{{ review.Description | slice:':50' }}</p>
+                      <h4>{{ review.Name }} <span>{{ review.Place }}</span></h4>
+                      <!-- <img src="{% static 'images/testimonial/testimonial_icon_01.jpg' %}" alt="testimonial icon"
+                        class="img-responsive"> -->
+                      <!-- <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span> -->
+                    </div>
+                    <!-- <div class="testimonial-image">
+                      <img src="{% static 'images/testimonial/testimonial_01.jpg' %}" alt="client image"
+                        class="img-responsive">
+                    </div> -->
+                  </div>
+                {% endfor %}
+
               </div>
-          </div>
-          <div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; ">
-              <a href="{% url 'review' %}">
-                  <button style="background-color:rgb(146, 39, 143); border-radius: 5px;"><h4 style="color: white;" >Write Your Reviews ></h4></button>
-              </a>
-          </div>
-      </div>
-  </section>
-  <!-- Testimonial End here -->
-{% endif %}
+            </div>
+        </div>
+        <div style="align-items: end; display: flex; justify-content: end; margin-top: 20px; ">
+            <a href="{% url 'review' %}">
+                <button style="background-color:rgb(146, 39, 143); border-radius: 5px;"><h4 style="color: white;" >Write Your Reviews ></h4></button>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Testimonial End here -->
 
 <!-- Rides Start here -->
 <section class="teachers teachers-two">
