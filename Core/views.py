@@ -94,9 +94,9 @@ def add_images(request):
         images = request.FILES.getlist('images')
 
         for image in images:
-            resized = resize(image,800)
+            # resized = resize(image,800)
             try:
-                Gallery_Image.objects.create(Image=resized)
+                Gallery_Image.objects.create(Image=image)
             except Exception as exception:
                 messages.warning(request,exception)
                 return redirect('image-gallery')
@@ -132,8 +132,8 @@ def add_partners(request):
         partners = request.FILES.getlist('partners')
 
         for partner in partners:
-            resized = resize(partner,300)
-            Partners.objects.create(Image=resized)
+            # resized = resize(partner,300)
+            Partners.objects.create(Image=partner)
 
         messages.success(request,'New partners added successfully ... !')
         return redirect('manage-partners')
@@ -278,9 +278,9 @@ def add_schools(request):
     if request.method == 'POST':
         schools = request.FILES.getlist('images')
 
-        for partner in schools:
-            resized = resize(partner,800)
-            Schools.objects.create(Image=resized)
+        for school in schools:
+            # resized = resize(school,800)
+            Schools.objects.create(Image=school)
 
         messages.success(request,'New schools added successfully ... !')
         return redirect('manage-schools')
