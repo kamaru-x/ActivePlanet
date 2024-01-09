@@ -243,7 +243,7 @@ def delete_review(request):
 
 @login_required
 def enquiries(request):
-    enquiries = Enquiry.objects.all()
+    enquiries = Enquiry.objects.all().order_by('-id')
 
     context = {
         'enquiries' : enquiries
