@@ -39,6 +39,7 @@ class Review(models.Model):
     Date = models.DateField(auto_now_add=True)
     Name = models.CharField(max_length=100)
     Place = models.CharField(max_length=100,null=True)
+    Rating = models.IntegerField(default=0)
     Description = models.TextField()
 
 class Enquiry(models.Model):

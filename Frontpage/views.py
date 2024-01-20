@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from Core.models import Banner,Gallery_Image,Review,Enquiry,Partners,Event,Schools
 from Frontpage.models import Visitor
 import uuid
+from django.contrib import messages
 
 # Create your views here.
 
@@ -91,10 +92,13 @@ def review(request):
         name = request.POST.get('name')
         place = request.POST.get('place')
         description = request.POST.get('description')
+        rating = request.POST.get('rating')
 
         try:
-            Review.objects.create(Name=name,Place=place,Description=description)
-            return JsonResponse({'status':'success'})
+            Review.objects.create(Name=name,Place=place,Description=description,Rating=rating)
+            # return JsonResponse({'status':'success'})
+            messages.success(request,'Review Added Successfully ... !')
+            return redirect('review')
         except:
             return JsonResponse({'status':'failed'})
         
