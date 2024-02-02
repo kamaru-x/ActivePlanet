@@ -58,7 +58,7 @@
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="achievement-item">
                         <img src="{% static 'frontpage/icons8-management-100.png' %}" style="max-width: 30%;"  alt=""><br>
-                        <span class="counter">100</span><span>k +</span>
+                        <span class="counter">100</span><span>k+</span>
                         <p>Happy Customers</p>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 <div class="col-md-3 col-sm-3 col-12">
                     <div class="achievement-item">
                         <img src="{% static 'frontpage/icons8-land-96.png' %}" style="max-width: 32%;"  alt=""><br>
-                        <span class="counter">100</span><span>+</span>
+                        <span class="counter">10,000</span><span>+</span>
                         <p>Vertical Garden</p>
                     </div>
                 </div>
@@ -88,7 +88,6 @@
     </div>
 </section>
 <!-- Achievements End here -->
-
 
 <!-- Testimonial Start here -->
 <section class="testimonial padding-120">
@@ -103,16 +102,22 @@
                 
                 {% for review in reviews %}
                   <div class="testimonial-item swiper-slide">
-                    <div class="testimonial-details">
-                      <p>{{ review.Description | slice:':50' }}</p>
+                    <div class="testimonial-details" style="min-height: 150px;">
+                      <p>{{ review.Description | slice:':500' }}</p>
                       <h4>{{ review.Name }} <span>{{ review.Place }}</span></h4>
                       <!-- <img src="{% static 'images/testimonial/testimonial_icon_01.jpg' %}" alt="testimonial icon"
                         class="img-responsive"> -->
-                      <!-- <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star"></span>
-                      <span class="fa fa-star"></span> -->
+                        {% if review.Rating == 1 %}
+                          <span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                        {% elif review.Rating == 2 %}
+                          <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                        {% elif review.Rating == 3 %}
+                          <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                        {% elif review.Rating == 4 %}
+                          <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>
+                        {% elif review.Rating == 5 %}
+                          <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>
+                        {% endif %}
                     </div>
                     <!-- <div class="testimonial-image">
                       <img src="{% static 'images/testimonial/testimonial_01.jpg' %}" alt="client image"
@@ -143,78 +148,48 @@
             <div class="teacher-items">
               <div class="teacher-slider swiper-container">
                 <div class="swiper-wrapper">
+                  
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2855.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex Jhonson</a></h4>
-                      <span>Sains Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
+                  </div>
+
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2635.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex bare</a></h4>
-                      <span>Art Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
+                  </div>
+                  
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2676.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">helas Jhonson</a></h4>
-                      <span>English Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
-                  <!-- <div class="teacher-item swiper-slide">
-                    <div class="teacher-image">
-                      <img src="{% static 'frontpage/about/_I2A2884.JPG' %}" alt="teacher image" class="img-responsive">
-                    </div>
-                    <div class="teacher-content">
-                      <h4><a href="teacher-details.html">paul Jhonson</a></h4>
-                      <span>Math Teacher</span>
-                    </div>
-                  </div> -->
+                  </div>
+
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2770.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex Jhonson</a></h4>
-                      <span>Sains Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
-                  <div class="teacher-item swiper-slide">
+                  </div>
+                  
+                  <!-- <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2813.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex Jhonson</a></h4>
-                      <span>Art Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
+                  </div> -->
+
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2840.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex Jhonson</a></h4>
-                      <span>English Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
+                  </div>
+
                   <div class="teacher-item swiper-slide">
                     <div class="teacher-image">
                       <img src="{% static 'frontpage/about/_I2A2847.JPG' %}" alt="teacher image" class="img-responsive">
                     </div>
-                    <!-- <div class="teacher-content">
-                      <h4><a href="teacher-details.html">Alex Jhonson</a></h4>
-                      <span>Math Teacher</span>
-                    </div> -->
-                  </div><!-- teacher-item -->
+                  </div>
 
                 </div><!-- swiper-wrapper -->
               </div><!-- swiper-container -->
@@ -285,58 +260,33 @@
                         <div class="teacher-content">
                             <h4>Nizar Abdulla <br><span>Managing Director</span></h4>
                             <p>Distinctively initiate and sustainable synergy vaan tactical opportunities.</p>
-                            <ul>
-                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                              <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                            </ul>
-                            <!-- <a href="teacher-details.html">View Portfolio</a> -->
                         </div>
                     </div>
                 </div>
-              <div class="col-lg-4 col-xs-12 director-col">
-                <div class="teacher-item">
-                  <div class="teacher-image">
-                    <img src="{% static 'frontpage/ed.jpeg' %}" alt="teacher image" class="img-responsive">
+
+                <div class="col-lg-4 col-xs-12 director-col">
+                  <div class="teacher-item">
+                    <div class="teacher-image">
+                      <img src="{% static 'frontpage/ed.jpeg' %}" alt="teacher image" class="img-responsive">
+                    </div>
+                    <div class="teacher-content">
+                      <h4>Shahanas Basheer <br><span>Executive Director</span></h4>
+                      <p>Distinctively initiate and sustainable synergy vaan tactical opportunities.</p>
+                    </div>
                   </div>
-                  <div class="teacher-content">
-                    <h4>Shahanas Basheer <br><span>Executive Director</span></h4>
-                  
-                    <p>Distinctively initiate and sustainable synergy vaan tactical opportunities.</p>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                      </ul>
-                    <!-- <a href="teacher-details.html">View Portfolio</a> -->
+                </div>
+
+                <div class="col-lg-4 col-xs-12 director-col">
+                  <div class="teacher-item">
+                    <div class="teacher-image">
+                      <img src="{% static 'frontpage/Director.png' %}" alt="teacher image" class="img-responsive">
+                    </div>
+                    <div class="teacher-content">
+                      <h4>Majeed Nottan <br><span>Director</span></h4>
+                      <p>Distinctively initiate and sustainable synergy vaan tactical opportunities.</p>
+                    </div>
                   </div>
-                </div><!-- teacher item -->
-              </div>
-              <div class="col-lg-4 col-xs-12 director-col">
-                <div class="teacher-item">
-                  <div class="teacher-image">
-                    <img src="{% static 'frontpage/Director.png' %}" alt="teacher image" class="img-responsive">
-                  </div>
-                  <div class="teacher-content">
-                    <!-- <h4>Shajahan Abdeen<span>Manager Operations</span></h4> -->
-                    <h4>Majeed Nottan <br><span>Director</span></h4>
-                  
-                    <p>Distinctively initiate and sustainable synergy vaan tactical opportunities.</p>
-                      <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                      </ul>
-                    <!-- <a href="teacher-details.html">View Portfolio</a> -->
-                  </div>
-                </div><!-- teacher item -->
-              </div>
+                </div>
             </div>
         </div>
     </div>

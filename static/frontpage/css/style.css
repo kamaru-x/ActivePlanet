@@ -6350,6 +6350,11 @@ header.header-two ul.menu {
     }
 }
 
+.vlog-slider{
+    -webkit-transform: translateX(-210px) translatey(-8px);
+    transform: translateX(-210px) translatey(-8px);
+}
+
 
 /*  */
 .header-four ul.menu {
